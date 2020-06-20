@@ -1,0 +1,8 @@
+/d table;	 //to open a table 
+select * from table where condition = sth;	//select all with some conditionselect * from a,b where condition = sth and a.x = b.x; //cross tables 
+add "distinct" to avoid duplicates 
+select * from a l1, a l2; // cartition self joint 
+select count(*) x from a group by x; //see count for each x in table a  
+select count(*) x from a group by x having count(*) >2; //see count for each x in table a and count > 2
+ 
+
