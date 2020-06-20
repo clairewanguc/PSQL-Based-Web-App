@@ -1,0 +1,6 @@
+in this step, I added two tables that were not listed in the schema text. I realized that it would be interesting to see professors collaborators. And, I realized that the scope of my project need to expand. SO, after adding two tables, I now have 10 tables. The two tables added are called collaborators and profcolb.
+
+
+
+
+

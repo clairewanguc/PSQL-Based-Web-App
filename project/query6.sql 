@@ -1,0 +1,17 @@
+-- please run these in project folder 
+-- out put all students, their advisors and their advisors' collaborators, which are all the people a student may want to contact 
+select gradname as students,  professors.profname as professors, collaborators.profname as collaborators from students inner join professors on adname = profname full outer join profcolb on profcolb.colbb = professors.profname inner join collaborators using (profname);
+
+
+--this query shows information about professors who has a collaborator. The information includes their labs, departments and collaborated projects
+select distinct profname as professors, pilab as labs, profdept as department,projname as collaborated_project from professors inner join profcolb on profname in (select colba from profcolb) or profname in (select colbb from profcolb) natural join departments;
+
+--select big scale schools based on the number of students and number of falculties, and the candidates include schools in the database and their collaborator schools; the ouput is departments in the big schools 
+with big as (select distinct scolname as big_schools from schools full outer join scolcolb on schools.scolname = scolcolb.scola group by scolname having schools.scale_students >99 and scale_faculty > 50)
+select deptname as departments_in_big_schools from departments inner join big on departments.scolname in (select * from big);
+
+
+-- select grad students, their advisor, their labs and departments
+ select gradname as students, adname as advisors, pilab as labs, deptname as departments from students inner join professors on adname = profname natural join departments;
+
+

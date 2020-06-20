@@ -1,0 +1,14 @@
+-- here is results after indexing 
+--explain select profname from professors natural join students where students.gradname = profname;
+-- Seq Scan on professors  (cost=0.00..1621.26 rows=51026 width=5)
+--Seq Scan on students  (cost=0.00..180.26 rows=11026 width=5)
+
+
+
+--results after running the following code 
+-- explain select adname from students where adname = 'name';
+-- Seq Scan on students  (cost=0.00..207.83 rows=1 width=4)
+create index idx_adname on students(adname);
+-- results after indexing 
+-- Index Only Scan using idx_adname on students  (cost=0.29..8.30 rows=1 width=4)
+-- so the index helped to look up a specific thing from the tabel with many records 
